@@ -138,17 +138,6 @@ label2.pack()
 label3 = Label(window)
 label3.pack()
 
-"""copy_button = Button(window,
-                     text="COPY PASSWORD",
-                     command=copy_option,
-                     fg="orange",
-                     bg="black",
-                     activeforeground="orange",
-                     activebackground="black",
-                     state=ACTIVE,
-                     compound="center")
-copy_button.pack()"""
-
 """menubar = Menu(window)
 window.config(menu=menubar)
 fileMenu = Menu(menubar, tearoff=0)
