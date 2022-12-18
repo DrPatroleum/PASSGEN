@@ -1,15 +1,15 @@
-import secrets
-import string
-from tkinter import *
-from tkinter import messagebox
 
-result = ""
+from tkinter import messagebox
+from tkinter import *
+import string
+import secrets
+
 
 def click():
     if (numerki.get() == 1) and (literki.get() == 1) and (spec_znaki.get() == 1):
         generate_full()
     if (numerki.get() == 1) and (literki.get() == 1) and (spec_znaki.get() == 0):
-        generate_letters_num()
+        generate_leters_num()
     if (numerki.get() == 1) and (literki.get() == 0) and (spec_znaki.get() == 1):
         generate_num_spec()
     if (numerki.get() == 0) and (literki.get() == 1) and (spec_znaki.get() == 1):
@@ -23,10 +23,13 @@ def click():
     label4 = Label(window,
                    text="Your password has been copied to clipboard!")
     label4.pack()
+    # generate password
 
-"""def sel():
-    selection = "Długość hasła wyniesie: " + str(pass_len.get())
-    label.config(text=selection)"""
+
+def copy_option(password):
+    window.clipboard_clear()
+    window.clipboard_append(password)
+
 
 def generate_full():
     password = ''
@@ -36,95 +39,107 @@ def generate_full():
     copy_option(password)
 
 
-def generate_letters_num():
+def generate_leters_num():
     password = ''
-    for _ in range(pass_len.get()):
-        password += ''.join(secrets.choice(letters_num))
+    for i in range(pass_len.get()):
+        password += ''.join(secrets.choice(leters_num))
     label3.config(text=password)
-    
+    copy_option(password)
+
+
 def generate_num_spec():
     password = ''
-    for _ in range(pass_len.get()):
+    for i in range(pass_len.get()):
         password += ''.join(secrets.choice(num_spec))
     label3.config(text=password)
-    
+    copy_option(password)
+
+
 def generate_letters_spec():
     password = ''
-    for _ in range(pass_len.get()):
+    for i in range(pass_len.get()):
         password += ''.join(secrets.choice(letters_spec))
     label3.config(text=password)
-    
+    copy_option(password)
+
+
 def generate_numbers_only():
     password = ''
-    for _ in range(pass_len.get()):
+    for i in range(pass_len.get()):
         password += ''.join(secrets.choice(digits))
     label3.config(text=password)
-    
+    copy_option(password)
+
+
 def generate_letters_only():
     password = ''
-    for _ in range(pass_len.get()):
+    for i in range(pass_len.get()):
         password += ''.join(secrets.choice(letters))
     label3.config(text=password)
-    
+    copy_option(password)
+
+
 def generate_spec_only():
     password = ''
-    for _ in range(pass_len.get()):
+    for i in range(pass_len.get()):
         password += ''.join(secrets.choice(special_chars))
     label3.config(text=password)
-       
+    copy_option(password)
+
+
 letters = string.ascii_letters
 digits = string.digits
 special_chars = string.punctuation
 
 full_alphabet = letters + digits + special_chars
-letters_num = letters + digits
+leters_num = letters + digits
 num_spec = digits + special_chars
 letters_spec = letters + special_chars
 
 window = Tk()
-window.title(".:PASSGEN:.")
+window.title("PASSGEN")
 window.geometry("300x300")
 window.resizable(False, False)
 icon = PhotoImage(file='/Users/defcon/Documents/passgen/set.png')
 window.iconphoto(True, icon)
 
 label1 = Label(window,
-              text="Co ma zawierać hasło?")
+               text="What the password should consist of?")
 label1.pack()
 
 numerki = IntVar()
 check_button_numbers = Checkbutton(window,
-                           text="numerki",
-                           variable=numerki)
+                                   text="Numbers",
+                                   variable=numerki)
 check_button_numbers.pack()
 
 literki = IntVar()
 check_button_letters = Checkbutton(window,
-                           text="literki",
-                           variable= literki)
+                                   text="Letters",
+                                   variable=literki)
 check_button_letters.pack()
 
 spec_znaki = IntVar()
 check_button_special = Checkbutton(window,
-                           text="znaki spec",
-                           variable=spec_znaki)
+                                   text="Special Characters",
+                                   variable=spec_znaki)
 check_button_special.pack()
 
 pass_len = IntVar()
-scale = Scale(window, 
-              from_ = 8, 
+scale = Scale(window,
+              from_=8,
               to=24,
               length=250,
               orient=HORIZONTAL,
-              font = ("Consolas", 20),
-              tickinterval= 4,
-              showvalue= 1,
+              font=("Arial", 20),
+              tickinterval=4,
+              showvalue=1,
               resolution=1,
               variable=pass_len)
 scale.pack()
 
 gen_button = Button(window,
-                    text="GENERATE!",
+                    text="GENERATE",
                     command=click,
                     font=("Arial", 24),
                     fg="orange",
@@ -136,51 +151,10 @@ gen_button = Button(window,
 gen_button.pack()
 
 label2 = Label(window,
-               text="Wygenerowane haslo to:")
+               text="Generated password is:")
 label2.pack()
 
 label3 = Label(window)
 label3.pack()
 
-"""menubar = Menu(window)
-window.config(menu=menubar)
-fileMenu = Menu(menubar, tearoff=0)
-menubar.add_cascade(label="File", menu=fileMenu)
-fileMenu.add_command(label="Open") #command="")
-fileMenu.add_command(label="save") #command="")
-fileMenu.add_separator()
-fileMenu.add_command(label="exit") #command="")
-editMenu = Menu(menubar, tearoff=0)
-menubar.add_cascade(label="Edit", menu=editMenu)
-editMenu.add_command(label="edit")
-
 window.mainloop()
-
-print("Generator Haseł 1.0")
-
-"""while decision != 0:
-    decision = input("Wybierz 'k' by kontynować lub 'w' by wyjść z programu ")
-    if decision == "k":
-        while True:
-            try:
-                pass_len = int(input("Jak długie ma być hasło? (wpisz liczbę znaków) "))
-                if pass_len != 0:    
-                    break
-            except ValueError:
-                continue
-        letters = input("Czy mam uzyc liter w haśle? y/n ")
-        numbers = input("Czy mam uzyc cyfr w haśle? y/n ")
-        special_characters = input("Czy uzyc znakow specjalnych? y/n ")
-        if letters == 'y' and digits == 'y' and special_characters == 'y':
-            generate_full()
-        if letters == 'y' and digits == 'y':
-            generate_leters_num()
-        if digits == 'y' and special_characters == 'y':
-            generate_num_spec()
-        if letters == 'y' and special_characters == 'y':
-            generate_letters_spec()
-    if decision == "w":
-        break
-    if decision != "k" and decision != "w":
-        print("Błąd, spróbuj wybrać ponownie.")
-        continue"""
