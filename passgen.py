@@ -1,28 +1,26 @@
-from tkinter import messagebox
 from tkinter import *
 import string
 import secrets
 
 
 def click():
-    if (numerki.get() == 1) and (literki.get() == 1) and (spec_znaki.get() == 1):
+    if (check_numbers.get() == 1) and (check_letters.get() == 1) and (check_special_characters.get() == 1):
         generate_full()
-    if (numerki.get() == 1) and (literki.get() == 1) and (spec_znaki.get() == 0):
-        generate_leters_num()
-    if (numerki.get() == 1) and (literki.get() == 0) and (spec_znaki.get() == 1):
+    if (check_numbers.get() == 1) and (check_letters.get() == 1) and (check_special_characters.get() == 0):
+        generate_letters_num()
+    if (check_numbers.get() == 1) and (check_letters.get() == 0) and (check_special_characters.get() == 1):
         generate_num_spec()
-    if (numerki.get() == 0) and (literki.get() == 1) and (spec_znaki.get() == 1):
+    if (check_numbers.get() == 0) and (check_letters.get() == 1) and (check_special_characters.get() == 1):
         generate_letters_spec()
-    if (numerki.get() == 1) and (literki.get() == 0) and (spec_znaki.get() == 0):
+    if (check_numbers.get() == 1) and (check_letters.get() == 0) and (check_special_characters.get() == 0):
         generate_numbers_only()
-    if (numerki.get() == 0) and (literki.get() == 1) and (spec_znaki.get() == 0):
+    if (check_numbers.get() == 0) and (check_letters.get() == 1) and (check_special_characters.get() == 0):
         generate_letters_only()
-    if (numerki.get() == 0) and (literki.get() == 0) and (spec_znaki.get() == 1):
+    if (check_numbers.get() == 0) and (check_letters.get() == 0) and (check_special_characters.get() == 1):
         generate_spec_only()
     label4 = Label(window,
-                   text="Your password has been copied to clipboard!")
+                   text="The password has been copied to clipboard!")
     label4.pack()
-    # generate password
 
 
 def copy_option(password):
@@ -30,60 +28,58 @@ def copy_option(password):
     window.clipboard_append(password)
 
 
+def create_result(password):
+    label3.config(text=password)
+    copy_option(password)
+
+
 def generate_full():
     password = ''
-    for i in range(pass_len.get()):
+    for _ in range(pass_len.get()):
         password += ''.join(secrets.choice(full_alphabet))
-    label3.config(text=password)
-    copy_option(password)
+    create_result(password)
 
 
-def generate_leters_num():
+def generate_letters_num():
     password = ''
-    for i in range(pass_len.get()):
-        password += ''.join(secrets.choice(leters_num))
-    label3.config(text=password)
-    copy_option(password)
+    for _ in range(pass_len.get()):
+        password += ''.join(secrets.choice(letters_num))
+    create_result(password)
 
 
 def generate_num_spec():
     password = ''
-    for i in range(pass_len.get()):
+    for _ in range(pass_len.get()):
         password += ''.join(secrets.choice(num_spec))
-    label3.config(text=password)
-    copy_option(password)
+    create_result(password)
 
 
 def generate_letters_spec():
     password = ''
-    for i in range(pass_len.get()):
+    for _ in range(pass_len.get()):
         password += ''.join(secrets.choice(letters_spec))
-    label3.config(text=password)
-    copy_option(password)
+    create_result(password)
 
 
 def generate_numbers_only():
     password = ''
-    for i in range(pass_len.get()):
+    for _ in range(pass_len.get()):
         password += ''.join(secrets.choice(digits))
-    label3.config(text=password)
-    copy_option(password)
+    create_result(password)
 
 
 def generate_letters_only():
     password = ''
-    for i in range(pass_len.get()):
+    for _ in range(pass_len.get()):
         password += ''.join(secrets.choice(letters))
-    label3.config(text=password)
-    copy_option(password)
+    create_result(password)
 
 
 def generate_spec_only():
     password = ''
-    for i in range(pass_len.get()):
+    for _ in range(pass_len.get()):
         password += ''.join(secrets.choice(special_chars))
-    label3.config(text=password)
-    copy_option(password)
+    create_result(password)
 
 
 letters = string.ascii_letters
@@ -91,7 +87,7 @@ digits = string.digits
 special_chars = string.punctuation
 
 full_alphabet = letters + digits + special_chars
-leters_num = letters + digits
+letters_num = letters + digits
 num_spec = digits + special_chars
 letters_spec = letters + special_chars
 
@@ -106,22 +102,22 @@ label1 = Label(window,
                text="What the password should consist of?")
 label1.pack()
 
-numerki = IntVar()
+check_numbers = IntVar()
 check_button_numbers = Checkbutton(window,
                                    text="Numbers",
-                                   variable=numerki)
+                                   variable=check_numbers)
 check_button_numbers.pack()
 
-literki = IntVar()
+check_letters = IntVar()
 check_button_letters = Checkbutton(window,
                                    text="Letters",
-                                   variable=literki)
+                                   variable=check_letters)
 check_button_letters.pack()
 
-spec_znaki = IntVar()
+check_special_characters = IntVar()
 check_button_special = Checkbutton(window,
                                    text="Special Characters",
-                                   variable=spec_znaki)
+                                   variable=check_special_characters)
 check_button_special.pack()
 
 pass_len = IntVar()
