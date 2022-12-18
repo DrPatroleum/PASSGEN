@@ -1,4 +1,3 @@
-
 from tkinter import messagebox
 from tkinter import *
 import string
@@ -131,7 +130,6 @@ scale = Scale(window,
               to=24,
               length=250,
               orient=HORIZONTAL,
-              font=("Arial", 20),
               tickinterval=4,
               showvalue=1,
               resolution=1,
@@ -141,11 +139,6 @@ scale.pack()
 gen_button = Button(window,
                     text="GENERATE",
                     command=click,
-                    font=("Arial", 24),
-                    fg="orange",
-                    bg="black",
-                    activeforeground="orange",
-                    activebackground="black",
                     state=ACTIVE,
                     compound="center")
 gen_button.pack()
