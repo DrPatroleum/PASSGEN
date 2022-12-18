@@ -20,7 +20,9 @@ def click():
         generate_letters_only()
     if (numerki.get() == 0) and (literki.get() == 0) and (spec_znaki.get() == 1):
         generate_spec_only()
-    #generowanie hasła
+    label4 = Label(window,
+                   text="Your password has been copied to clipboard!")
+    label4.pack()
 
 """def sel():
     selection = "Długość hasła wyniesie: " + str(pass_len.get())
@@ -34,37 +36,37 @@ def generate_full():
     
 def generate_leters_num():
     password = ''
-    for i in range(pass_len.get()):
+    for _ in range(pass_len.get()):
         password += ''.join(secrets.choice(leters_num))
     label3.config(text=password)
     
 def generate_num_spec():
     password = ''
-    for i in range(pass_len.get()):
+    for _ in range(pass_len.get()):
         password += ''.join(secrets.choice(num_spec))
     label3.config(text=password)
     
 def generate_letters_spec():
     password = ''
-    for i in range(pass_len.get()):
+    for _ in range(pass_len.get()):
         password += ''.join(secrets.choice(letters_spec))
     label3.config(text=password)
     
 def generate_numbers_only():
     password = ''
-    for i in range(pass_len.get()):
+    for _ in range(pass_len.get()):
         password += ''.join(secrets.choice(digits))
     label3.config(text=password)
     
 def generate_letters_only():
     password = ''
-    for i in range(pass_len.get()):
+    for _ in range(pass_len.get()):
         password += ''.join(secrets.choice(letters))
     label3.config(text=password)
     
 def generate_spec_only():
     password = ''
-    for i in range(pass_len.get()):
+    for _ in range(pass_len.get()):
         password += ''.join(secrets.choice(special_chars))
     label3.config(text=password)
        
@@ -78,7 +80,7 @@ num_spec = digits + special_chars
 letters_spec = letters + special_chars
 
 window = Tk()
-window.title("Generator Haseł 1.0")
+window.title(".:PASSGEN:.")
 window.geometry("300x300")
 window.resizable(False, False)
 icon = PhotoImage(file='/Users/defcon/Documents/passgen/set.png')
