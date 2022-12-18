@@ -9,7 +9,7 @@ def click():
     if (numerki.get() == 1) and (literki.get() == 1) and (spec_znaki.get() == 1):
         generate_full()
     if (numerki.get() == 1) and (literki.get() == 1) and (spec_znaki.get() == 0):
-        generate_leters_num()
+        generate_letters_num()
     if (numerki.get() == 1) and (literki.get() == 0) and (spec_znaki.get() == 1):
         generate_num_spec()
     if (numerki.get() == 0) and (literki.get() == 1) and (spec_znaki.get() == 1):
@@ -33,11 +33,13 @@ def generate_full():
     for i in range(pass_len.get()):
         password += ''.join(secrets.choice(full_alphabet))
     label3.config(text=password)
-    
-def generate_leters_num():
+    copy_option(password)
+
+
+def generate_letters_num():
     password = ''
     for _ in range(pass_len.get()):
-        password += ''.join(secrets.choice(leters_num))
+        password += ''.join(secrets.choice(letters_num))
     label3.config(text=password)
     
 def generate_num_spec():
@@ -75,7 +77,7 @@ digits = string.digits
 special_chars = string.punctuation
 
 full_alphabet = letters + digits + special_chars
-leters_num = letters + digits
+letters_num = letters + digits
 num_spec = digits + special_chars
 letters_spec = letters + special_chars
 
@@ -122,15 +124,15 @@ scale = Scale(window,
 scale.pack()
 
 gen_button = Button(window,
-                text = "GENERUJ HASŁO",
-                command = click,
-                font = ("Arial", 24),
-                fg = "#00FF00",
-                bg = "black",
-                activeforeground = "#00FF00",
-                activebackground = "black",
-                state=ACTIVE,
-                compound = "center")
+                    text="GENERATE!",
+                    command=click,
+                    font=("Arial", 24),
+                    fg="orange",
+                    bg="black",
+                    activeforeground="orange",
+                    activebackground="black",
+                    state=ACTIVE,
+                    compound="center")
 gen_button.pack()
 
 label2 = Label(window,
