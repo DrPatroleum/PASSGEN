@@ -21,7 +21,7 @@
 
 
 ## Features
-List the ready features will be here.
+Added info how much time need hacker to crack generated password.
 
 
 ## Project Status
@@ -31,6 +31,7 @@ Project is in progress.
 ## Room for Improvement
 - Change how window look like
 - Add some feature
+- Make code cleaner
 
 
 ## Contact
