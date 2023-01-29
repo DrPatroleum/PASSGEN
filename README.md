@@ -14,6 +14,7 @@
 - Program can generate password with letters, numbers and special symbols.
 - You can choose waht you want to use in your password (letters, numbers or/and symbols).
 - You can choose length of password.
+- You can check how many time hacker need to crack generated password.
 
 
 ## Technologies Used
@@ -30,7 +31,7 @@ Project is in progress.
 
 ## Room for Improvement
 - Change how window look like
-- Add some feature
+- Add some features
 - Make code cleaner
 
 
