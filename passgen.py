@@ -1,7 +1,92 @@
 from tkinter import *
+from tkinter import messagebox
 import string
 import secrets
 import time
+
+all_characters_dict = {8: '8 hours',
+                       9: '3 weeks',
+                       10: '5 years',
+                       11: '400 years',
+                       12: '34k years',
+                       13: '2m years',
+                       14: '200m years',
+                       15: '15bn years',
+                       16: '1tn years',
+                       17: '93tn years',
+                       18: '7qd years'}
+
+letters_num_dict = {8: '1 hour',
+                    9: '3 days',
+                    10: '7 months',
+                    11: '41 years',
+                    12: '2k years',
+                    13: '100k years',
+                    14: '9m years',
+                    15: '600m years',
+                    16: '37bn years',
+                    17: '2tn years',
+                    18: '100tn years'}
+
+num_spec_dict = {8: '8 hours',
+                 9: '3 weeks',
+                 10: '5 years',
+                 11: '400 years',
+                 12: '34k years',
+                 13: '2m years',
+                 14: '200m years',
+                 15: '15bn years',
+                 16: '1tn years',
+                 17: '93tn years',
+                 18: '7qd years'}
+
+letters_spec_dict = {8: '8 hours',
+                     9: '3 weeks',
+                     10: '5 years',
+                     11: '400 years',
+                     12: '34k years',
+                     13: '2m years',
+                     14: '200m years',
+                     15: '15bn years',
+                     16: '1tn years',
+                     17: '93tn years',
+                     18: '7qd years'}
+
+numbers_dict = {8: 'no time',
+                9: 'no time',
+                10: 'no time',
+                11: '2 secs',
+                12: '25 secs',
+                13: '4 mins',
+                14: '41 mins',
+                15: '6 hours',
+                16: '2 days',
+                17: '4 weeks',
+                18: '9 months'}
+
+letters_dict = {8: '22 mins',
+                9: '19 hours',
+                10: '1 month',
+                11: '5 years',
+                12: '300 years',
+                13: '16k years',
+                14: '800k years',
+                15: '43m years',
+                16: '2bn years',
+                17: '100bn years',
+                18: '6tn years'}
+
+special_dict = {8: '8 hours',
+                9: '3 weeks',
+                10: '5 years',
+                11: '400 years',
+                12: '34k years',
+                13: '2m years',
+                14: '200m years',
+                15: '15bn years',
+                16: '1tn years',
+                17: '93tn years',
+                   18: '7qd years'}
 
 
 def click():
@@ -24,13 +109,6 @@ def click():
     label5.pack()
 
 
-def clear():
-    label1.after(1000, label1.destroy())
-    label2.after(1000, label2.destroy())
-    label3.after(1000, label3.destroy())
-    #label4.after(1000, label4.destroy())
-    #label5.after(1000, label5.destroy())
-
 def copy_option(password):
     window.clipboard_clear()
     window.clipboard_append(password)
@@ -41,224 +119,64 @@ def create_result(password):
     copy_option(password)
 
 
+def check_passwd_power(self):
+    pwr_result = self[pass_len.get()]
+    power = 'Hacker need ' + pwr_result + 'to crack password by brute force'
+    label4 = Label(window, text=power)
+    label4.pack()
+
+
 def generate_full():
     password = ''
     for _ in range(pass_len.get()):
         password += ''.join(secrets.choice(full_alphabet))
     create_result(password)
-    if pass_len.get() == 8:
-        txt = "Hacker need 8 hours to crack this password"
-    if pass_len.get() == 9:
-        txt = "Hacker need 3 weeks to crack this password"
-    if pass_len.get() == 10:
-        txt = "Hacker need 5 years to crack this password"
-    if pass_len.get() == 11:
-        txt = "Hacker need 400 years to crack this password"
-    if pass_len.get() == 12:
-        txt = "Hacker need 34k years to crack this password"
-    if pass_len.get() == 13:
-        txt = "Hacker need 2m years to crack this password"
-    if pass_len.get() == 14:
-        txt = "Hacker need 200m years to crack this password"
-    if pass_len.get() == 15:
-        txt = "Hacker need 15bn years to crack this password"
-    if pass_len.get() == 16:
-        txt = "Hacker need 1tn years to crack this password"
-    if pass_len.get() == 17:
-        txt = "Hacker need 93tn years to crack this password"
-    if pass_len.get() == 18:
-        txt = "Hacker need 7qd years to crack this password"
-        #moze warto ogarnac to jakims slownikiem
-    label4 = Label(window,
-                   text=txt)
-    label4.pack()
-
+    check_passwd_power(all_characters_dict)
+    
+    
+    messagebox.showinfo('Generated password', password)
 
 def generate_letters_num():
     password = ''
     for _ in range(pass_len.get()):
         password += ''.join(secrets.choice(letters_num))
     create_result(password)
-    if pass_len.get() == 8:
-        txt = "Hacker need 1 hour to crack this password"
-    if pass_len.get() == 9:
-        txt = "Hacker need 3 days to crack this password"
-    if pass_len.get() == 10:
-        txt = "Hacker need 7 months to crack this password"
-    if pass_len.get() == 11:
-        txt = "Hacker need 41 years to crack this password"
-    if pass_len.get() == 12:
-        txt = "Hacker need 2k years to crack this password"
-    if pass_len.get() == 13:
-        txt = "Hacker need 100k years to crack this password"
-    if pass_len.get() == 14:
-        txt = "Hacker need 9m years to crack this password"
-    if pass_len.get() == 15:
-        txt = "Hacker need 600m years to crack this password"
-    if pass_len.get() == 16:
-        txt = "Hacker need 37bn years to crack this password"
-    if pass_len.get() == 17:
-        txt = "Hacker need 2tn years to crack this password"
-    if pass_len.get() == 18:
-        txt = "Hacker need 100tn years to crack this password"
-    label4 = Label(window,
-                   text=txt)
-    label4.pack()
+    check_passwd_power(letters_num_dict)
 
 def generate_num_spec():
     password = ''
     for _ in range(pass_len.get()):
         password += ''.join(secrets.choice(num_spec))
     create_result(password)
-    if pass_len.get() == 8:
-        txt = "Hacker need 8 hours to crack this password"
-    if pass_len.get() == 9:
-        txt = "Hacker need 3 weeks to crack this password"
-    if pass_len.get() == 10:
-        txt = "Hacker need 5 years to crack this password"
-    if pass_len.get() == 11:
-        txt = "Hacker need 400 years to crack this password"
-    if pass_len.get() == 12:
-        txt = "Hacker need 34k years to crack this password"
-    if pass_len.get() == 13:
-        txt = "Hacker need 2m years to crack this password"
-    if pass_len.get() == 14:
-        txt = "Hacker need 200m years to crack this password"
-    if pass_len.get() == 15:
-        txt = "Hacker need 15bn years to crack this password"
-    if pass_len.get() == 16:
-        txt = "Hacker need 1tn years to crack this password"
-    if pass_len.get() == 17:
-        txt = "Hacker need 93tn years to crack this password"
-    if pass_len.get() == 18:
-        txt = "Hacker need 7qd years to crack this password"
-    label4 = Label(window,
-                   text=txt)
-    label4.pack()
+    check_passwd_power(num_spec_dict)
 
 def generate_letters_spec():
     password = ''
     for _ in range(pass_len.get()):
         password += ''.join(secrets.choice(letters_spec))
     create_result(password)
-    if pass_len.get() == 8:
-        txt = "Hacker need 8 hours to crack this password"
-    if pass_len.get() == 9:
-        txt = "Hacker need 3 weeks to crack this password"
-    if pass_len.get() == 10:
-        txt = "Hacker need 5 years to crack this password"
-    if pass_len.get() == 11:
-        txt = "Hacker need 400 years to crack this password"
-    if pass_len.get() == 12:
-        txt = "Hacker need 34k years to crack this password"
-    if pass_len.get() == 13:
-        txt = "Hacker need 2m years to crack this password"
-    if pass_len.get() == 14:
-        txt = "Hacker need 200m years to crack this password"
-    if pass_len.get() == 15:
-        txt = "Hacker need 15bn years to crack this password"
-    if pass_len.get() == 16:
-        txt = "Hacker need 1tn years to crack this password"
-    if pass_len.get() == 17:
-        txt = "Hacker need 93tn years to crack this password"
-    if pass_len.get() == 18:
-        txt = "Hacker need 7qd years to crack this password"
-    label4 = Label(window,
-                   text=txt)
-    label4.pack()
+    check_passwd_power(letters_spec_dict)
 
 def generate_numbers_only():
     password = ''
     for _ in range(pass_len.get()):
         password += ''.join(secrets.choice(digits))
     create_result(password)
-    if pass_len.get() == 8:
-        txt = "Hacker need no time to crack this password"
-    if pass_len.get() == 9:
-        txt = "Hacker need no time to crack this password"
-    if pass_len.get() == 10:
-        txt = "Hacker need no time to crack this password"
-    if pass_len.get() == 11:
-        txt = "Hacker need 2 secs to crack this password"
-    if pass_len.get() == 12:
-        txt = "Hacker need 25 secs to crack this password"
-    if pass_len.get() == 13:
-        txt = "Hacker need 4 mins to crack this password"
-    if pass_len.get() == 14:
-        txt = "Hacker need 41 mins to crack this password"
-    if pass_len.get() == 15:
-        txt = "Hacker need 6 hours to crack this password"
-    if pass_len.get() == 16:
-        txt = "Hacker need 2 days to crack this password"
-    if pass_len.get() == 17:
-        txt = "Hacker need 4 weeks to crack this password"
-    if pass_len.get() == 18:
-        txt = "Hacker need 9 months to crack this password"
-    label4 = Label(window,
-                   text=txt)
-    label4.pack()
+    check_passwd_power(numbers_dict)
 
 def generate_letters_only():
     password = ''
     for _ in range(pass_len.get()):
         password += ''.join(secrets.choice(letters))
     create_result(password)
-    if pass_len.get() == 8:
-        txt = "Hacker need 22 mins to crack this password"
-    if pass_len.get() == 9:
-        txt = "Hacker need 19 hours to crack this password"
-    if pass_len.get() == 10:
-        txt = "Hacker need 1 month to crack this password"
-    if pass_len.get() == 11:
-        txt = "Hacker need 5 years to crack this password"
-    if pass_len.get() == 12:
-        txt = "Hacker need 300 years to crack this password"
-    if pass_len.get() == 13:
-        txt = "Hacker need 16k years to crack this password"
-    if pass_len.get() == 14:
-        txt = "Hacker need 800k years to crack this password"
-    if pass_len.get() == 15:
-        txt = "Hacker need 43m years to crack this password"
-    if pass_len.get() == 16:
-        txt = "Hacker need 2bn years to crack this password"
-    if pass_len.get() == 17:
-        txt = "Hacker need 100bn years to crack this password"
-    if pass_len.get() == 18:
-        txt = "Hacker need 6tn years to crack this password"
-    label4 = Label(window,
-                   text=txt)
-    label4.pack()
+    check_passwd_power(letters_dict)
 
 def generate_spec_only():
     password = ''
     for _ in range(pass_len.get()):
         password += ''.join(secrets.choice(special_chars))
     create_result(password)
-    if pass_len.get() == 8:
-        txt = "Hacker need 8 hours to crack this password"
-    if pass_len.get() == 9:
-        txt = "Hacker need 3 weeks to crack this password"
-    if pass_len.get() == 10:
-        txt = "Hacker need 5 years to crack this password"
-    if pass_len.get() == 11:
-        txt = "Hacker need 400 years to crack this password"
-    if pass_len.get() == 12:
-        txt = "Hacker need 34k years to crack this password"
-    if pass_len.get() == 13:
-        txt = "Hacker need 2m years to crack this password"
-    if pass_len.get() == 14:
-        txt = "Hacker need 200m years to crack this password"
-    if pass_len.get() == 15:
-        txt = "Hacker need 15bn years to crack this password"
-    if pass_len.get() == 16:
-        txt = "Hacker need 1tn years to crack this password"
-    if pass_len.get() == 17:
-        txt = "Hacker need 93tn years to crack this password"
-    if pass_len.get() == 18:
-        txt = "Hacker need 7qd years to crack this password"
-    label4 = Label(window,
-                   text=txt)
-    label4.pack()
+    check_passwd_power(special_dict)
 
 letters = string.ascii_letters
 digits = string.digits
