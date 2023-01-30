@@ -89,7 +89,6 @@ special_dict = {8: '8 hours',
                    18: '7qd years'}
 
 
-
 def click():
     if (check_numbers.get() == 1) and (check_letters.get() == 1) and (check_special_characters.get() == 1):
         generate_full()
@@ -105,9 +104,6 @@ def click():
         generate_letters_only()
     if (check_numbers.get() == 0) and (check_letters.get() == 0) and (check_special_characters.get() == 1):
         generate_spec_only()
-    #label5 = Label(window,
-    #               text="The password has been copied to clipboard!")
-    #label5.pack()
 
 
 def copy_option(password):
@@ -116,15 +112,15 @@ def copy_option(password):
 
 
 def create_result(password):
-    label3.config(text=password)
+    # label3.config(text=password)
     copy_option(password)
 
 
 def check_passwd_power(self, password):
     pwr_result = self[pass_len.get()]
-    power = 'Hacker need ' + pwr_result + ' to crack password by brute force'
-    label4 = Label(window, text=power)
-    label4.pack()
+    power = 'Hacker need ' + pwr_result + ' to crack this password by brute force'
+    #label4 = Label(window, text=power)
+    # label4.pack()
     msgbox = 'Your password is:\n ' + str(password) + '\n\n' + str(
         power) + '\n\n' + 'The password has been copied to clipboard!'
     messagebox.showinfo('Generated password', msgbox)
