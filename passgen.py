@@ -106,21 +106,14 @@ def click():
         generate_spec_only()
 
 
-def copy_option(password):
+def create_result(password):
     window.clipboard_clear()
     window.clipboard_append(password)
-
-
-def create_result(password):
-    # label3.config(text=password)
-    copy_option(password)
 
 
 def check_passwd_power(self, password):
     pwr_result = self[pass_len.get()]
     power = 'Hacker need ' + pwr_result + ' to crack this password by brute force'
-    #label4 = Label(window, text=power)
-    # label4.pack()
     msgbox = 'Your password is:\n ' + str(password) + '\n\n' + str(
         power) + '\n\n' + 'The password has been copied to clipboard!'
     messagebox.showinfo('Generated password', msgbox)
@@ -193,7 +186,7 @@ letters_spec = letters + special_chars
 
 window = Tk()
 window.title("PASSGEN")
-window.geometry("300x300")
+window.geometry("300x200")
 window.resizable(False, False)
 
 label1 = Label(window,
@@ -237,8 +230,7 @@ gen_button = Button(window,
                     compound="center")
 gen_button.pack()
 
-label2 = Label(window,
-               text="Generated password is:")
+label2 = Label(window)
 label2.pack()
 
 label3 = Label(window)
